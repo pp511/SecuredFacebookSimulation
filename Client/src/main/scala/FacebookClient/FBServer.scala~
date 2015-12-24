@@ -1,0 +1,97 @@
+package Server
+import akka.actor._
+import akka.actor.{ActorSystem, Props}
+import akka.actor.Acto
+import collection.mutable.ListBuffer
+import akka.routing.RoundRobinRouter
+import scala.concurrent.duration._
+import java.util.concurrent.TimeUnit
+//import client._
+//import common._
+import java.io.FileWriter
+import Server._
+import akka.actor.{ActorSystem, Props}
+import akka.actor.Actor
+import akka.routing.RoundRobinRouter
+import com.typesafe.config.ConfigFactory
+
+//import common.Messages
+case class TBD()
+
+/* Functions of Server Class*/
+case class createUser(id: Int, firstname: String, lasstname: String)
+case class addFriend(id: Int, idf: Int)
+case class findFriend(id: Int, idf: Int)
+case class deleteFriend(id: Int, idf: Int)
+case class createPost(id: Int, post: String)
+case class viewPost(id: Int)
+case class deletPpost(id: Int, postId:Int)
+case class viewfriendList(id: Int)
+case class viewpprofilePic(id: Int) // Place Holder for Part 1.2
+
+class FBServer extends Actor {
+
+  import context.dispatcher
+  System.setProperty("java.net.preferIPv4Stack", "true")
+  val noOfWorkers = ((Runtime.getRuntime().availableProcessors()) * 1.5).toInt
+  val workerRouter = context.actorOf(Props[Worker].withRouter(RoundRobinRouter(noOfWorkers)), name = "workerRouter")
+
+  Global.totalUsers = 10;
+
+  var listOfusers = new ListBuffer[ActorRef]
+
+  def receive = {
+      case TBD() => {
+      }
+    }
+}
+
+class Worker extends Actor {
+
+  def receive = {
+    case createUser(id: Int, firstname: String, lastname: String) => {
+     // Global.
+      println("createUser request received")
+      sender ! "User Account Created"
+    }
+    //*******************************************************************************************************************
+    case addFriend(id: Int, idf: Int) => {
+      sender ! "Friend Added"
+    }
+    //*******************************************************************************************************************
+    case findFriend(id: Int, idf: Int) => {
+      sender ! "Friend Found"
+    }
+    //******************************************************************************************************************
+    case deleteFriend(id: Int, idf: Int) => {
+      sender ! "Friend Deleted"
+    }
+    //******************************************************************************************************************
+    case createPost(id: Int, post: String) => {
+      sender ! "Posted on Timeline"
+    }
+    //*******************************************************************************************************************
+    case viewPost(id: Int) => {
+      sender ! "Show the post"
+    }
+    //********************************************************************************************************************
+    case deletPpost(id: Int, postId:Int) => {
+      sender ! "Post Deleted"
+    }
+    //*******************************************************************************************************************
+    case viewfriendList(id: Int) => {
+      sender ! "Friendlist created"
+    }
+    //*******************************************************************************************************************
+    case viewpprofilePic(id: Int) => { // Place Holder for Part 1.2
+      sender ! "Profile Pic Displayed"
+    }
+    //*******************************************************************************************************************
+  }
+}
+
+/*
+object BackendServer extends App {
+  val server = ActorSystem("ServerSystem").actorOf(Props(new Server(args(0).toInt)), name = "Server")
+}
+*/

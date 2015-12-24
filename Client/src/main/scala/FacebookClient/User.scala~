@@ -1,0 +1,150 @@
+package Client
+import akka.actor.ActorSystem
+import spray.http.BasicHttpCredentials
+import spray.client.pipelining._
+import akka.actor.Actor
+import akka.actor.Cancellable
+import scala.concurrent.duration.Duration
+import java.util.concurrent.TimeUnit
+//import org.apache.commons.httpclient.util.URIUtil
+import scala.util.Random
+import spray.http.HttpRequest
+import java.io.RandomAccessFile
+import java.util.Date
+import java.io.File
+import akka.actor.Props
+import spray.http.HttpResponse
+import Client._
+
+
+case class UserStart()
+case class UserStop()
+
+class User(userid: Int, maxUser: Int) extends Actor {
+  val CreateUser = "http://localhost:8080/createuser?userid="
+  val CreatePost = "http://localhost:8080/createpost?userid="
+  val AddFriend = "http://localhost:8080/addfriend?userid="
+  val FindFriend = "http://localhost:8080/findfriend?userid="
+  val DeleteFriend = "http://localhost:8080/deletefriend?userid="
+  val ViewPost = "http://localhost:8080/viewpost?userid="
+  val ViewFriendlist = "http://localhost:8080/viewfriendlist?userid="
+  val ViewPage = "http://localhost:8080/viewpage?userid="
+
+  implicit val system = context.system
+  import system.dispatcher
+  Global.currentUserCount+=1
+
+  val pipeline = sendReceive
+
+ // var select = Random.nextInt(1000)
+  var select = userid
+  var addfriend : Cancellable =null;
+  var createpost : Cancellable = null;
+  var viewfriendlist : Cancellable = null;
+  var viewpost: Cancellable = null;
+  var viewpage: Cancellable = null;
+  var findfriend : Cancellable = null;
+  var deletefriend : Cancellable = null;
+
+  var randhighselect = Random.nextInt(20)
+  var randlowselect = Random.nextInt(10)
+
+  var Mypost = 1 + Random.nextInt(maxUser);
+  var Myfriend = 1 + Random.nextInt(maxUser);
+  var Mypageview = 1+ Random.nextInt(maxUser);
+
+  var countpost  = 0
+  var countfriend = 0
+  var countpageview = 0
+  var friendset = scala.collection.mutable.Set[Int]()
+   pipeline(Post(CreateUser + userid + "&loginid=" + Global.loginidlist(select) + "&password=" + Global.passlist(select) + "&firstname=" + Global.namelist(select) + "&lastname=" + Global.lnamelist(select) + "&gender=" + Global.genderlist(randlowselect) + "&country=" + Global.countrylist(randlowselect) + "&city=" + Global.citylist(randlowselect) + "&profession=" + Global.professionlist(randhighselect) + "&interestedin=" + Global.interestlist(randhighselect)))
+  def receive = {
+    case UserStart =>
+    addfriend = context.system.scheduler.schedule(Duration.create(200, TimeUnit.MILLISECONDS),
+          Duration.create(4000, TimeUnit.MILLISECONDS))(addFriendfun)
+    viewpage = context.system.scheduler.schedule(Duration.create(300, TimeUnit.MILLISECONDS),
+          Duration.create(2500, TimeUnit.MILLISECONDS))(viewpageFun)
+    createpost =context.system.scheduler.schedule(Duration.create(400, TimeUnit.MILLISECONDS),
+          Duration.create(3000, TimeUnit.MILLISECONDS))(createpostFun)
+    viewpost = context.system.scheduler.schedule(Duration.create(500, TimeUnit.MILLISECONDS),
+          Duration.create(1000, TimeUnit.MILLISECONDS))(viewpostFun)
+   viewfriendlist=context.system.scheduler.schedule(Duration.create(600, TimeUnit.MILLISECONDS),
+          Duration.create(3500, TimeUnit.MILLISECONDS))(viewfriendlistFun)
+   findfriend=context.system.scheduler.schedule(Duration.create(800, TimeUnit.MILLISECONDS),
+          Duration.create(2000, TimeUnit.MILLISECONDS))(findfriendFun)
+   deletefriend=context.system.scheduler.schedule(Duration.create(900, TimeUnit.MILLISECONDS),
+          Duration.create(5000, TimeUnit.MILLISECONDS))(deletefriendFun)
+    case UserStop =>
+     addfriend.cancel
+     viewpage.cancel
+     createpost.cancel
+     viewpost.cancel
+     viewfriendlist.cancel
+     findfriend.cancel
+     deletefriend.cancel
+  }
+  def addFriendfun() {
+    if (countfriend < Myfriend) {
+         countfriend = countfriend+1
+      //println("Add Friend Request")
+      val toadd = Random.nextInt(maxUser);
+      if(toadd != userid && (friendset add toadd)){
+      val result = pipeline(Post(AddFriend + userid + "&friendid=" + toadd))
+     // displayResult(result)
+     }
+    } else {
+     addfriend.cancel
+    }
+  }
+  def createpostFun() {
+    if (countpost < Mypost) {
+         countpost = countpost+1
+     // println("createpostFun ")
+     val topost = Global.postlist(Random.nextInt(Global.postlist.length))
+     val res=topost.replace(' ','+')
+       val result = pipeline(Post(CreatePost + userid +"&post=" + res))
+     //displayResult(result)
+    } else {
+     createpost.cancel
+    }
+  }
+  def findfriendFun() {
+      println("findfriendFun ")
+      val result = pipeline(Get(FindFriend + userid ))
+    // displayResult(result)
+  }
+  def deletefriendFun() {
+      println("deletefriendFun ")
+      val todel = friendset.toList(Random.nextInt(friendset.size))
+      val result = pipeline(Put(DeleteFriend + userid +"&friendid" + todel))
+     friendset -= todel
+     displayResult(result)
+  }
+  def viewpostFun() {
+      println("viewpostFun ")
+      val result = pipeline(Get(ViewPost + userid ))
+    // displayResult(result)
+  }
+  def viewfriendlistFun() {
+      println("viewfriendlistFun ")
+      val result = pipeline(Get(ViewFriendlist + userid ))
+     displayResult(result)
+  }
+  def viewpageFun() {
+    if (countpageview < Mypageview) {
+         countpageview = countpageview+1
+      println("View Page Request")
+      val result = pipeline(Get(ViewPage + userid))
+     // displayResult(result)
+    } else {
+     viewpage.cancel
+    }
+  }
+  def displayResult(result: scala.concurrent.Future[spray.http.HttpResponse]) {
+    result.foreach {
+      response =>
+      //  println(Global.PageViewCount)
+       println(s"Request completed with status ${response.status} and content:\n${response.entity.asString}")
+    }
+  }
+}

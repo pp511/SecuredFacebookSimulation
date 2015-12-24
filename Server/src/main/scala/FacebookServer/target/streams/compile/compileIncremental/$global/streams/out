@@ -1,0 +1,104 @@
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mInitial source changes: [0m
+[0m[[0mdebug[0m] [0m	removed:Set()[0m
+[0m[[0mdebug[0m] [0m	added: Set(/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/Worker.scala, /home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/Global.scala, /home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/User.scala, /home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala)[0m
+[0m[[0mdebug[0m] [0m	modified: Set()[0m
+[0m[[0mdebug[0m] [0mInvalidated products: Set()[0m
+[0m[[0mdebug[0m] [0mExternal API changes: API Changes: Set()[0m
+[0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/Worker.scala, /home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/Global.scala, /home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/User.scala, /home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala)[0m
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m	product: Set()[0m
+[0m[[0mdebug[0m] [0m	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/Worker.scala, /home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/Global.scala, /home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/User.scala, /home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala)[0m
+[0m[[0mdebug[0m] [0mRecompiling all 4 sources: invalidated sources (4) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 4 Scala sources to /home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/target/scala-2.10/classes...[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.10.5[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.10.5[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 256027fa, interfacing (CompilerInterface) with Scala compiler version 2.10.5[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rhino.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/classes:/home/priyansh/.sbt/boot/scala-2.10.5/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/target/scala-2.10/classes[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:2: not found: object akka[0m
+[0m[[31merror[0m] [0mimport akka.actor._[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:3: not found: object akka[0m
+[0m[[31merror[0m] [0mimport akka.actor.{ActorSystem, Props}[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:4: not found: object akka[0m
+[0m[[31merror[0m] [0mimport akka.actor.Actor[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:6: not found: object akka[0m
+[0m[[31merror[0m] [0mimport akka.routing.RoundRobinRouter[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:13: not found: object akka[0m
+[0m[[31merror[0m] [0mimport akka.actor.{ActorSystem, Props}[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:14: not found: object akka[0m
+[0m[[31merror[0m] [0mimport akka.actor.Actor[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:15: not found: object akka[0m
+[0m[[31merror[0m] [0mimport akka.routing.RoundRobinRouter[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:16: object typesafe is not a member of package com[0m
+[0m[[31merror[0m] [0mimport com.typesafe.config.ConfigFactory[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:32: not found: type Actor[0m
+[0m[[31merror[0m] [0mclass FBServer extends Actor {[0m
+[0m[[31merror[0m] [0m                       ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:34: not found: value context[0m
+[0m[[31merror[0m] [0m  import context.dispatcher[0m
+[0m[[31merror[0m] [0m         ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:37: not found: value context[0m
+[0m[[31merror[0m] [0m  val workerRouter = context.actorOf(Props[Worker].withRouter(RoundRobinRouter(noOfWorkers)), name = "workerRouter")[0m
+[0m[[31merror[0m] [0m                     ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:41: not found: type ActorRef[0m
+[0m[[31merror[0m] [0m  var listOfusers = new ListBuffer[ActorRef][0m
+[0m[[31merror[0m] [0m                                   ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:43: missing parameter type for expanded function[0m
+[0m[[31merror[0m] [0mThe argument types of an anonymous function must be fully known. (SLS 8.5)[0m
+[0m[[31merror[0m] [0mExpected type was: ?[0m
+[0m[[31merror[0m] [0m  def receive = {[0m
+[0m[[31merror[0m] [0m                ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:49: not found: type Actor[0m
+[0m[[31merror[0m] [0mclass Worker extends Actor {[0m
+[0m[[31merror[0m] [0m                     ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:51: missing parameter type for expanded function[0m
+[0m[[31merror[0m] [0mThe argument types of an anonymous function must be fully known. (SLS 8.5)[0m
+[0m[[31merror[0m] [0mExpected type was: ?[0m
+[0m[[31merror[0m] [0m  def receive = {[0m
+[0m[[31merror[0m] [0m                ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:55: not found: value sender[0m
+[0m[[31merror[0m] [0m      sender ! "User Account Created"[0m
+[0m[[31merror[0m] [0m      ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:59: not found: value sender[0m
+[0m[[31merror[0m] [0m      sender ! "Friend Added"[0m
+[0m[[31merror[0m] [0m      ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:63: not found: value sender[0m
+[0m[[31merror[0m] [0m      sender ! "Friend Found"[0m
+[0m[[31merror[0m] [0m      ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:67: not found: value sender[0m
+[0m[[31merror[0m] [0m      sender ! "Friend Deleted"[0m
+[0m[[31merror[0m] [0m      ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:71: not found: value sender[0m
+[0m[[31merror[0m] [0m      sender ! "Posted on Timeline"[0m
+[0m[[31merror[0m] [0m      ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:75: not found: value sender[0m
+[0m[[31merror[0m] [0m      sender ! "Show the post"[0m
+[0m[[31merror[0m] [0m      ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:79: not found: value sender[0m
+[0m[[31merror[0m] [0m      sender ! "Post Deleted"[0m
+[0m[[31merror[0m] [0m      ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:83: not found: value sender[0m
+[0m[[31merror[0m] [0m      sender ! "Friendlist created"[0m
+[0m[[31merror[0m] [0m      ^[0m
+[0m[[31merror[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/FBServer.scala:87: not found: value sender[0m
+[0m[[31merror[0m] [0m      sender ! "Profile Pic Displayed"[0m
+[0m[[31merror[0m] [0m      ^[0m
+[0m[[33mwarn[0m] [0m/home/priyansh/DOSFinalProj/FacebookSimulation/Server/src/main/scala/FacebookServer/Global.scala:3: imported `User' is permanently hidden by definition of class User in package Server[0m
+[0m[[33mwarn[0m] [0mimport Server.User[0m
+[0m[[33mwarn[0m] [0m              ^[0m
